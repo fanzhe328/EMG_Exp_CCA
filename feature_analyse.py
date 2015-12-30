@@ -12,7 +12,9 @@ def feature_action_sensitivity(feature_type='TD4'):
     ''' 对每个特征，分析其在不移位和移位情况下的协方差 '''
     results = []
     
-    subjects = ['subject_' + str(i + 1) for i in range(1)]
+    subjects = ['subject_' + str(i + 1) for i in range(5)]
+    # print subjects
+    # sys.exit(0)
 
     channel_pos_list = ['S0',                                             # 中心位置
                         'U1', 'U2', 'D1', 'D2', 'L1', 'L2', 'R1', 'R2']  # 上 下 左 右
@@ -87,8 +89,8 @@ def plot_plsc_figure(X_train_r,Y_train_r,X_test_r, Y_test_r, filename):
     plt.ylabel("y scores")
     plt.title('Dimensino 1: X vs Y (test corr = %.2f)' %
               np.corrcoef(X_test_r[:, 0], Y_test_r[:, 0])[0, 1])
-    plt.xticks(())
-    plt.yticks(())
+    # plt.xticks(())
+    # plt.yticks(())
     plt.legend(loc="best")
 
     plt.subplot(224)
@@ -98,8 +100,8 @@ def plot_plsc_figure(X_train_r,Y_train_r,X_test_r, Y_test_r, filename):
     plt.ylabel("y scores")
     plt.title('Comp. 2: X vs Y (test corr = %.2f)' %
               np.corrcoef(X_test_r[:, 1], Y_test_r[:, 1])[0, 1])
-    plt.xticks(())
-    plt.yticks(())
+    # plt.xticks(())
+    # plt.yticks(())
     plt.legend(loc="best")
 
     # 2) Off diagonal plot components 1 vs 2 for X and Y
@@ -111,8 +113,8 @@ def plot_plsc_figure(X_train_r,Y_train_r,X_test_r, Y_test_r, filename):
     plt.title('X comp. 1 vs X comp. 2 (test corr = %.2f)'
               % np.corrcoef(X_test_r[:, 0], X_test_r[:, 1])[0, 1])
     plt.legend(loc="best")
-    plt.xticks(())
-    plt.yticks(())
+    # plt.xticks(())
+    # plt.yticks(())
 
     plt.subplot(223)
     plt.plot(Y_train_r[:, 0], Y_train_r[:, 1], "*b", label="train")
@@ -122,8 +124,8 @@ def plot_plsc_figure(X_train_r,Y_train_r,X_test_r, Y_test_r, filename):
     plt.title('Y comp. 1 vs Y comp. 2 , (test corr = %.2f)'
               % np.corrcoef(Y_test_r[:, 0], Y_test_r[:, 1])[0, 1])
     plt.legend(loc="best")
-    plt.xticks(())
-    plt.yticks(())
+    # plt.xticks(())
+    # plt.yticks(())
     # print subject
     plt.savefig(root_path + "/result/figure/cca/" + filename + ".png")
     plt.close()
